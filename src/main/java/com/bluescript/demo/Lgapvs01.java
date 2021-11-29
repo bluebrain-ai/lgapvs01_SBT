@@ -124,14 +124,15 @@ public class Lgapvs01 {
     public ResponseEntity<Dfhcommarea> MainLine(@RequestBody Dfhcommarea payload) {
         BeanUtils.copyProperties(payload, dfhcommarea);
         wfPolicyKey.setWfRequestId(dfhcommarea.getCaRequestId().substring(3, 4));
-        wfPolicyKey.setWfPolicyNum(String.valueOf(caPolicyRequest.getCaPolicyNum()));
+        wfPolicyKey.setWfPolicyNum(String.valueOf(dfhcommarea.getCaPolicyRequest().getCaPolicyNum()));
         wfPolicyKey.setWfCustomerNum(String.valueOf(dfhcommarea.getCaCustomerNum()));
 
         switch (wfPolicyKey.getWfRequestId()) {
         case "C":
             wfCPolicyData.setWfBPostcode(dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBPostcode());
             wfCPolicyData.setWfBStatus(dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBStatus());
-            wfCPolicyData.setWfBCustomer(dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBCustomer().substring(0, 31));
+            wfCPolicyData.setWfBCustomer(
+                    dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBCustomer().substring(0, 31));
 
             break;
         case "E":
@@ -139,14 +140,16 @@ public class Lgapvs01 {
             wfEPolicyData.setWfEEquities(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaEEquities());
             wfEPolicyData.setWfEManagedFund(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaEManagedFund());
             wfEPolicyData.setWfEFundName(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaEFundName());
-            wfEPolicyData.setWfELifeAssured(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaELifeAssured().substring(0, 30));
+            wfEPolicyData.setWfELifeAssured(
+                    dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaELifeAssured().substring(0, 30));
             break;
         case "H":
             wfHPolicyData.setWfHPropertyType(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHPropertyType());
             wfHPolicyData.setWfHBedrooms(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHBedrooms());
             wfHPolicyData.setWfHValue(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHValue());
             wfHPolicyData.setWfHPostcode(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHPostcode());
-            wfHPolicyData.setWfHHouseName(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHHouseName().substring(0, 9));
+            wfHPolicyData
+                    .setWfHHouseName(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHHouseName().substring(0, 9));
             break;
         case "M":
             wfMPolicyData.setWfMMake(dfhcommarea.getCaPolicyRequest().getCaMotor().getCaMMake());
@@ -158,7 +161,7 @@ public class Lgapvs01 {
             // wfPolicyInfo.setWfPolicyData(Constants.EMPTY);
             break;
         }
-        wfPolicyKey.setWfPolicyNum(String.valueOf(caPolicyRequest.getCaPolicyNum()));
+        // wfPolicyKey.setWfPolicyNum(String.valueOf(caPolicyRequest.getCaPolicyNum()));
         try {
             ksdspoly.saveKsdsPoly(wfPolicyKey.getWfRequestId(), wfPolicyKey.getWfCustomerNum(),
                     wfPolicyKey.getWfPolicyNum(), wfCPolicyData.getWfBPostcode(), wfCPolicyData.getWfBStatus(),

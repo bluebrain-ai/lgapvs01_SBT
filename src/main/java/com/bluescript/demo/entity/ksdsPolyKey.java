@@ -21,12 +21,12 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ksdsPolyKey implements Serializable {
-    
-    @Column(name ="REQUESTID")
+
+    @Column(name = "REQUESTID")
     private String wfRequestId;
-    @Column(name ="CUSTOMERNUM")
+    @Column(name = "CUSTOMERNUM")
     private String wfCustomerNum;
-    @Column(name ="POLICYNUM")
+    @Column(name = "POLICYNUM")
     private String wfPolicyNum;
 
     public String toFixedWidthString() {
