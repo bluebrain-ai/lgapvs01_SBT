@@ -124,9 +124,9 @@ public class Lgapvs01 {
     public ResponseEntity<Dfhcommarea> MainLine(@RequestBody Dfhcommarea payload) {
         BeanUtils.copyProperties(payload, dfhcommarea);
         wfPolicyKey.setWfRequestId(dfhcommarea.getCaRequestId().substring(3, 4));
-        wfPolicyKey.setWfPolicyNum(String.valueOf(caPolicyRequest.getCaPolicyNum()));
+        wfPolicyKey.setWfPolicyNum(String.valueOf(dfhcommarea.getCaPolicyRequest().getCaPolicyNum()));
         wfPolicyKey.setWfCustomerNum(String.valueOf(dfhcommarea.getCaCustomerNum()));
-
+        log.warn("wfPolicyKey:" + wfPolicyKey.toString());
         switch (wfPolicyKey.getWfRequestId()) {
         case "C":
             wfCPolicyData.setWfBPostcode(dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBPostcode());
@@ -161,7 +161,7 @@ public class Lgapvs01 {
             // wfPolicyInfo.setWfPolicyData(Constants.EMPTY);
             break;
         }
-        wfPolicyKey.setWfPolicyNum(String.valueOf(caPolicyRequest.getCaPolicyNum()));
+        // wfPolicyKey.setWfPolicyNum(String.valueOf(caPolicyRequest.getCaPolicyNum()));
         try {
             ksdspoly.saveKsdsPoly(wfPolicyKey.getWfRequestId(), wfPolicyKey.getWfCustomerNum(),
                     wfPolicyKey.getWfPolicyNum(), wfCPolicyData.getWfBPostcode(), wfCPolicyData.getWfBStatus(),
