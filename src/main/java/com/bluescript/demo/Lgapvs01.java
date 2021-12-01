@@ -131,8 +131,7 @@ public class Lgapvs01 {
         case "C":
             wfCPolicyData.setWfBPostcode(dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBPostcode());
             wfCPolicyData.setWfBStatus(dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBStatus());
-            wfCPolicyData.setWfBCustomer(
-                    dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBCustomer().substring(0, 31));
+            wfCPolicyData.setWfBCustomer(dfhcommarea.getCaPolicyRequest().getCaCommercial().getCaBCustomer());
 
             break;
         case "E":
@@ -140,16 +139,14 @@ public class Lgapvs01 {
             wfEPolicyData.setWfEEquities(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaEEquities());
             wfEPolicyData.setWfEManagedFund(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaEManagedFund());
             wfEPolicyData.setWfEFundName(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaEFundName());
-            wfEPolicyData.setWfELifeAssured(
-                    dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaELifeAssured().substring(0, 30));
+            wfEPolicyData.setWfELifeAssured(dfhcommarea.getCaPolicyRequest().getCaEndowment().getCaELifeAssured());
             break;
         case "H":
             wfHPolicyData.setWfHPropertyType(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHPropertyType());
             wfHPolicyData.setWfHBedrooms(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHBedrooms());
             wfHPolicyData.setWfHValue(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHValue());
             wfHPolicyData.setWfHPostcode(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHPostcode());
-            wfHPolicyData
-                    .setWfHHouseName(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHHouseName().substring(0, 9));
+            wfHPolicyData.setWfHHouseName(dfhcommarea.getCaPolicyRequest().getCaHouse().getCaHHouseName());
             break;
         case "M":
             wfMPolicyData.setWfMMake(dfhcommarea.getCaPolicyRequest().getCaMotor().getCaMMake());
